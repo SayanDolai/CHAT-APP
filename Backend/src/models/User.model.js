@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
         unique : true ,
     },
     username : {
-        type : string ,
+        type : String ,
         required : true ,
     },
     profilePicture : {
