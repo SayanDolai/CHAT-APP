@@ -6,11 +6,14 @@ import cors from 'cors'
 import fs from "fs"
 import path from "path"
 import job from './lib/cron.js'
+import clerkWebhook from './webbhooks/clerk.webhooks.js'
 
 const app = express() 
 const PORT = process.env.PORT
 const FRONTEND_URL = process.env.FRONTEND_URL
 const publicDir = path.join(process.cwd() ,"public")
+
+app.use("api/webhook/clkerk",express.raw({type:"application/json"}),clerkWebhook) //webhook from clerk
 app.use(express.json()) //data comes from client
 app.use(clerkMiddleware()) //check the authentication
 app.use(cors({origin:FRONTEND_URL , credentials:true})) // 
