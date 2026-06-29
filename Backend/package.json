@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "build": "shx rm -rf dist && shx cp -r src dist",
+    "build": "shx rm -rf dist && shx cp -r src dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start" : "node server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@clerk/express": "^2.1.32",
     "cors": "^2.8.6",
+    "cron": "^4.4.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongodb": "^7.4.0",
