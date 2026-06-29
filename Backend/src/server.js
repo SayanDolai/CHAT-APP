@@ -1,7 +1,7 @@
 import express from 'express'
 import 'dotenv/config'
 import {clerkMiddleware} from '@clerk/express'
-import connectDB from './src/lib/db.js'
+import connectDB from './lib/db.js'
 import cors from 'cors'
 import fs from "fs"
 import path from "path"
