@@ -13,7 +13,7 @@ const publicDir = path.join(process.cwd() ,"public")
 app.use(express.json()) //data comes from client
 app.use(clerkMiddleware()) //check the authentication
 app.use(cors({origin:FRONTEND_URL , credentials:true})) // 
-app.get("/",(req,res)=>{
+app.get("/health",(req,res)=>{
     res.status(200).json("ok:true")
 })
 
