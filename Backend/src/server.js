@@ -9,7 +9,7 @@ import path from "path"
 const app = express() 
 const PORT = process.env.PORT
 const FRONTEND_URL = process.env.FRONTEND_URL
-const publicDir = path.join(process.cwd ,"public")
+const publicDir = path.join(process.cwd() ,"public")
 app.use(express.json()) //data comes from client
 app.use(clerkMiddleware()) //check the authentication
 app.use(cors({origin:FRONTEND_URL , credentials:true})) // 
