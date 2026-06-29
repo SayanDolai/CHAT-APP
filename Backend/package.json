@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+     "build": "shx rm -rf dist && shx cp -r src dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start" : "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +21,9 @@
     "mongodb": "^7.4.0",
     "mongoose": "^9.7.3",
     "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "rimraf": "^6.1.3",
+    "shx": "^0.4.0"
   }
 }
