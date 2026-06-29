@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 const userSchema = new mongoose.Schema({
     clerkId : {
-        type:string,
+        type:String,
         required : true,
         unique : true ,
     },
     email : {
-        type:string,
+        type:String,
         required : true,
         unique : true ,
     },
@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
         required : true ,
     },
     profilePicture : {
-        type : string ,
+        type : String ,
         default : ""
     },
 
