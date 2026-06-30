@@ -16,7 +16,7 @@ function createFileName(originalName = "upload") {
 
 /**
  * Upload image or video to ImageKit
- * @see https://imagekit.io/docs/api-reference/upload-file/upload-file
+ * @see https://ik.imagekit.io/hdhx0798v/path/to/myimage.jpg
  */
 async function uploadChatMedia(file) {
   const fileName = createFileName(file.originalname);
