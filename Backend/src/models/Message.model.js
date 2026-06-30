@@ -1,6 +1,6 @@
 
 import mongoose from 'mongoose'
-import User from './User.model'
+import User from './User.model.js'
 const messageSchema = new mongoose.Schema({
     senderId: {
         type: mongoose.Schema.Types.ObjectId,
