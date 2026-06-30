@@ -1,5 +1,5 @@
 import express from "express" 
-import user from "../models/User.model.js"
+import User from "../models/User.model.js"
 import {verifyWebhook} from "@clerk/backend/webhooks"
 
 const router = express.Router()
@@ -21,7 +21,7 @@ router.post("/",async(req,res)=>{
     // throws if the signature is wrong or the body was tampered with; only then do we trust evt.
     const evt = await verifyWebhook(request, { signnSecret });
 
-    if (evt.type === "user.created" || evt.type === "user.updated") {
+    if (evt.type === "User.created" || evt.type === "User.updated") {
       const u = evt.data;
 
       const email =
@@ -31,15 +31,15 @@ router.post("/",async(req,res)=>{
       const username =
         [u.first_name, u.last_name].filter(Boolean).join(" ") || u.username || email?.split("@")[0];
 
-      await user.findOneAndUpdate(
+      await User.findOneAndUpdate(
         { clerkId: u.id },
         { clerkId: u.id, email, username: u.username, profilePicture: u.image_url },
         { new: true, upsert: true, setDefaultsOnInsert: true },
       );
     }
     
-    if (evt.type === "user.deleted") {
-      if (evt.data.id) await user.findOneAndDelete({ clerkId: evt.data.id });
+    if (evt.type === "User.deleted") {
+      if (evt.data.id) await User.findOneAndDelete({ clerkId: evt.data.id });
     }
 
     res.status(200).json({ received: true });
