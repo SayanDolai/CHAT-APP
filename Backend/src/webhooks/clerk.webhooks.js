@@ -5,7 +5,7 @@ import {verifyWebhook} from "@clerk/backend/webhooks"
 const router = express.Router()
 router.post("/",async(req,res)=>{
     try{
-        const signnSecret = process.env.CLERK_SIGNING_KEY
+        const signnSecret = process.env.CLERK_WEBHOOK_SECRET
         if(!signnSecret){
             res.status(503).json({message :"CLERK_SIGNING_KEY is not defined"})
             return 
@@ -21,7 +21,7 @@ router.post("/",async(req,res)=>{
     // throws if the signature is wrong or the body was tampered with; only then do we trust evt.
     const evt = await verifyWebhook(request, { signnSecret });
 
-    if (evt.type === "User.created" || evt.type === "User.updated") {
+    if (evt.type === "user.created" || evt.type === "user.updated") {
       const u = evt.data;
 
       const email =
@@ -38,7 +38,7 @@ router.post("/",async(req,res)=>{
       );
     }
     
-    if (evt.type === "User.deleted") {
+    if (evt.type === "user.deleted") {
       if (evt.data.id) await User.findOneAndDelete({ clerkId: evt.data.id });
     }
 
