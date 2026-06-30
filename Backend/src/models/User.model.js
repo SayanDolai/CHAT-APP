@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
 
 }, 
-{timeStamps : true} , // created at and updatesd at
+{timestamps : true} , // created at and updatesd at
 )
 
 const User = mongoose.model("User",userSchema)

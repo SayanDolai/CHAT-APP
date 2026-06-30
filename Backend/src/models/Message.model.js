@@ -22,7 +22,7 @@ const messageSchema = new mongoose.Schema({
         type : String
     },
 }, 
-{timeStamps : true} , // created at and updatesd at
+{timestamps : true} , // created at and updatesd at
 )
 
 const Message = mongoose.model("Message",messageSchema)
